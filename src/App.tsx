@@ -3,36 +3,37 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useGetTokenMutation } from './store/api/tokenApi';
 
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+type ICode = string | undefined | null;
+
+const CLIENT_ID = process.env.REACT_APP_ACCESS_KEY;
+const CLIENT_SECRET = process.env.REACT_APP_SECRET_KEY;
+const AUTORIZE_URL = 'https://unsplash.com/oauth/authorize';
+const REDIRECT_URL = 'http://localhost:3000';
+
+const loginURL = `${AUTORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=
+${REDIRECT_URL}&scope=public+read_user+read_photos&response_type=code`
 
 function App() {
 
-  const [getToken, { isLoading, isSuccess }] = useGetTokenMutation();
-  const [token, setToken] = useState({});
-
-  const fetchToken = async () => {
-    const data = await getToken({ CLIENT_ID, CLIENT_SECRET }).unwrap()
-    if (isSuccess) setToken(data)
-  }
+  const [code, setCode] = useState<ICode>('');
 
   useEffect(() => {
-    fetchToken();
-  }, [])
+    const href: string = window.location.href
+    let code: ICode = window.localStorage.getItem('code')
 
-  // fetch('https://api.igdb.com/v4/age_ratings', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Client-ID': CLIENT_ID,
-  //     `Authorization: Bearer ${}`,
-  //   }
-  // })
+    if (!code && href) {
+      code = href.substring(1).split('?').find((elem) => elem.startsWith('code'))?.split('=')[1]
+
+      window.location.href = ''
+      window.localStorage.setItem('code', code)
+    }
+    setCode(code)
+  }, [])
 
   return (
     <>
-      {isLoading && <h1>...Loading</h1>}
-      {console.log(token.access_token)}
+      {/* {console.log('STATE =',code)} */}
+      <a href={loginURL}>Click</a>
     </>
   );
 }
