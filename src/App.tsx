@@ -15,24 +15,25 @@ ${REDIRECT_URL}&scope=public+read_user+read_photos&response_type=code`
 
 function App() {
 
-  const [code, setCode] = useState<ICode>('');
+  const [token, setToken] = useState<ICode>('');
 
   useEffect(() => {
     const href: string = window.location.href
     let code: ICode = window.localStorage.getItem('code')
 
     if (!code && href) {
-      code = href.substring(1).split('?').find((elem) => elem.startsWith('code'))?.split('=')[1]
 
+      code = href.split('?').find((elem) => elem.startsWith('code'))?.split('=')[1]
+     {console.log(code)}
       window.location.href = ''
-      window.localStorage.setItem('code', code)
+      window.localStorage.setItem('code', code!)
     }
-    setCode(code)
+    setToken(code)
   }, [])
 
   return (
     <>
-      {/* {console.log('STATE =',code)} */}
+      {console.log('STATE =',token)}
       <a href={loginURL}>Click</a>
     </>
   );
