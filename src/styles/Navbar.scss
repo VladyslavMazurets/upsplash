@@ -1,45 +1,163 @@
-$search-form-bgcolor: rgb(241, 241, 241);
+$search-form-bgcolor: #eee;
+$btn-color: #767676;
+
+@mixin buttonHover () {
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+@mixin customPadding ($p-block, $p-inline, $m-right) {
+    font-size: 18px;
+
+    padding-block: $p-block;
+    padding-inline: $p-inline;
+    margin-right: $m-right;
+}
 
 .navbar {
     width: auto;
-    height: 62px;
-    padding-block: 11px;
+    height: 50px;
+    padding-block: 15px;
     padding-inline: 30px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    .navbar_logo {}
 
-    .search-form {
-        position: relative;
-
+    .navbar-search {
         display: flex;
         align-items: center;
-        width: 50%;
 
-        .search-form__button {
-            position: absolute;
-            top: 23%;
-
-            font-size: 17px;
-
-            border: 0;
-            background-color: inherit;
+        .navbar_logo {
+            margin-right: 20px;
         }
 
-        .search-form__input {
-            width: 100%;
+        .search-form {
+            position: relative;
 
-            font-size: 16px;
+            display: flex;
+            align-items: center;
 
-            border-radius: 24px;
-            border: inherit;
-            background-color: $search-form-bgcolor;
+            .search-form__button {
+                position: absolute;
+                top: 27%;
+                left: 1.5%;
 
-            padding-block: 10px;
-            padding-inline: 28px;
+                font-size: 19px;
+
+                border: 0;
+                color: $btn-color;
+                background-color: inherit;
+
+                &:hover {
+                    @include buttonHover()
+                }
+            }
+
+            .search-form__input {
+                width: 900px;
+
+                border-radius: 24px;
+                border: inherit;
+                background-color: $search-form-bgcolor;
+
+                @include customPadding(12px, 48px, 15px);
+
+                &:focus {
+                    border: 0.5px solid $search-form-bgcolor;
+                    background-color: white;
+                    border-width: 0.5px;
+                    transition: 0.5s;
+                }
+            }
+
+        }
+
+        .navbar-search__btns {
+            margin-left: 32px;
+
+            .navbar-search__btn {
+                font-weight: 400;
+                text-decoration: none;
+                color: $btn-color;
+
+                @include customPadding(10px, 5px, 15px);
+
+                &:hover {
+                    @include buttonHover()
+                }
+            }
+        }
+    }
+
+    .navbar-client__btns {
+        display: flex;
+        align-items: center;
+        padding-inline: 15px;
+
+        .navbar-client__submit-btn {
+            background-color: inherit;
+            color: $btn-color;
+
+            border-width: 0.5px;
+            @include customPadding(5px, 15px, 10px);
+
+            &:hover {
+                @include buttonHover()
+            }
+        }
+
+        .navbar-client__btn {
+            border: 0;
+            background-color: inherit;
+
+            font-size: 30px;
+            margin-top: 5px;
+            margin-right: 10px;
+            color: $btn-color;
+
+            &:nth-child(3) {
+                font-size: 35px;
+            }
+
+            &:hover {
+                @include buttonHover()
+            }
+        }
+    }
+
+    .logout__btn {
+        @include customPadding(5px, 20px, 10px);
+
+        color: $btn-color;
+        background-color: inherit;
+
+        border-width: 0.5px;
+
+        &:hover {
+            @include buttonHover();
+            border-color: black;
+            background-color: rgb(255, 219, 219);
+        }
+    }
+
+    .login__btn {
+        text-decoration: none;
+        font-size: 18px;
+        border: solid;
+
+        @include customPadding(5px, 20px, 15px);
+
+        color: $btn-color;
+        background-color: inherit;
+        border-width: 0.5px;
+
+        &:hover {
+            @include buttonHover();
+            border-color: black;
+            background-color: rgb(200, 255, 200);
         }
     }
 }

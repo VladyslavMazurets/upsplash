@@ -35,9 +35,13 @@ export default function Authorization() {
     return (
         <>
             {!token ?
-                <a href={loginURL}> Login </a>
+                <a className="login__btn" href={loginURL}>
+                    Login
+                </a>
                 :
-                <button onClick={logOut}> Logout </button>
+                <button className="logout__btn" onClick={logOut}>
+                    Logout
+                </button>
             }
         </>
     )
