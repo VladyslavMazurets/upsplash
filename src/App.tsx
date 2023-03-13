@@ -7,7 +7,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Navbar />} />
+      <Route path="/" element={<Navbar />}>
+      </Route>
     </Routes>
   );
 }
