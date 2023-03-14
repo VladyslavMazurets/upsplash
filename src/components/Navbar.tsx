@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { BsSearch } from 'react-icons/bs'
 import { RxAvatar, RxHamburgerMenu } from 'react-icons/rx'
 import { IoNotificationsSharp } from 'react-icons/io5'
@@ -9,11 +9,9 @@ import Logo from '../assets/images/unsplash-logo.png'
 import Authorization from './Authorization '
 import '../styles/Navbar.scss'
 
-const handleSearch = (e: any) => {
+const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    { console.log('CLICK') }
 }
-
 
 export default function Navbar() {
     return (
@@ -59,8 +57,6 @@ export default function Navbar() {
                 <Authorization />
 
             </div>
-
-            <Outlet />
         </>
     )
 }
