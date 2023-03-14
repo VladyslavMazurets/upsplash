@@ -23,142 +23,147 @@ $btn-color: #767676;
     padding-inline: 30px;
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 
-
-    .navbar-search {
+    .navbar-search-block {
         display: flex;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-between;
 
-        .navbar_logo {
-            margin-right: 20px;
-        }
-
-        .search-form {
-            position: relative;
-
+        .navbar-search {
             display: flex;
             align-items: center;
 
-            .search-form__button {
-                position: absolute;
-                top: 27%;
-                left: 1.5%;
+            .navbar_logo {
+                margin-right: 20px;
+            }
 
-                font-size: 19px;
+            .search-form {
+                position: relative;
 
-                border: 0;
+                display: flex;
+                align-items: center;
+
+                .search-form__button {
+                    position: absolute;
+                    top: 27%;
+                    left: 1.5%;
+
+                    font-size: 19px;
+
+                    border: 0;
+                    color: $btn-color;
+                    background-color: inherit;
+
+                    &:hover {
+                        @include buttonHover()
+                    }
+                }
+
+                .search-form__input {
+                    width: 900px;
+
+                    border-radius: 24px;
+                    border: inherit;
+                    background-color: $search-form-bgcolor;
+
+                    @include customPadding(12px, 48px, 15px);
+
+                    &:focus {
+                        border: 0.5px solid $search-form-bgcolor;
+                        background-color: white;
+                        border-width: 0.5px;
+                        transition: 0.5s;
+                    }
+                }
+
+            }
+
+            .navbar-search__btns {
+                margin-left: 32px;
+
+                .navbar-search__btn {
+                    font-weight: 400;
+                    text-decoration: none;
+                    color: $btn-color;
+
+                    @include customPadding(10px, 5px, 15px);
+
+                    &:hover {
+                        @include buttonHover()
+                    }
+                }
+            }
+        }
+
+        .navbar-client__btns {
+            display: flex;
+            align-items: center;
+            padding-inline: 15px;
+
+            .navbar-client__submit-btn {
+                background-color: inherit;
                 color: $btn-color;
+
+                border-width: 0.5px;
+                @include customPadding(5px, 15px, 10px);
+
+                &:hover {
+                    @include buttonHover()
+                }
+            }
+
+            .navbar-client__btn {
+                border: 0;
                 background-color: inherit;
 
-                &:hover {
-                    @include buttonHover()
-                }
-            }
-
-            .search-form__input {
-                width: 900px;
-
-                border-radius: 24px;
-                border: inherit;
-                background-color: $search-form-bgcolor;
-
-                @include customPadding(12px, 48px, 15px);
-
-                &:focus {
-                    border: 0.5px solid $search-form-bgcolor;
-                    background-color: white;
-                    border-width: 0.5px;
-                    transition: 0.5s;
-                }
-            }
-
-        }
-
-        .navbar-search__btns {
-            margin-left: 32px;
-
-            .navbar-search__btn {
-                font-weight: 400;
-                text-decoration: none;
+                font-size: 30px;
+                margin-top: 5px;
+                margin-right: 10px;
                 color: $btn-color;
 
-                @include customPadding(10px, 5px, 15px);
+                &:nth-child(3) {
+                    font-size: 35px;
+                }
 
                 &:hover {
                     @include buttonHover()
                 }
             }
         }
-    }
 
-    .navbar-client__btns {
-        display: flex;
-        align-items: center;
-        padding-inline: 15px;
+        .logout__btn {
+            @include customPadding(5px, 20px, 10px);
 
-        .navbar-client__submit-btn {
-            background-color: inherit;
             color: $btn-color;
+            background-color: inherit;
 
             border-width: 0.5px;
-            @include customPadding(5px, 15px, 10px);
 
             &:hover {
-                @include buttonHover()
+                @include buttonHover();
+                border-color: black;
+                background-color: rgb(255, 219, 219);
             }
         }
 
-        .navbar-client__btn {
-            border: 0;
-            background-color: inherit;
+        .login__btn {
+            text-decoration: none;
+            font-size: 18px;
+            border: solid;
 
-            font-size: 30px;
-            margin-top: 5px;
-            margin-right: 10px;
+            @include customPadding(5px, 20px, 15px);
+
             color: $btn-color;
-
-            &:nth-child(3) {
-                font-size: 35px;
-            }
+            background-color: inherit;
+            border-width: 0.5px;
 
             &:hover {
-                @include buttonHover()
+                @include buttonHover();
+                border-color: black;
+                background-color: rgb(200, 255, 200);
             }
-        }
-    }
-
-    .logout__btn {
-        @include customPadding(5px, 20px, 10px);
-
-        color: $btn-color;
-        background-color: inherit;
-
-        border-width: 0.5px;
-
-        &:hover {
-            @include buttonHover();
-            border-color: black;
-            background-color: rgb(255, 219, 219);
-        }
-    }
-
-    .login__btn {
-        text-decoration: none;
-        font-size: 18px;
-        border: solid;
-
-        @include customPadding(5px, 20px, 15px);
-
-        color: $btn-color;
-        background-color: inherit;
-        border-width: 0.5px;
-
-        &:hover {
-            @include buttonHover();
-            border-color: black;
-            background-color: rgb(200, 255, 200);
         }
     }
 }

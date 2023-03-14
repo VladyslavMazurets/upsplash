@@ -1,3 +1,5 @@
+export type ICode = string | undefined | null;
+
 
 export interface IToken {
     access_token: string;
