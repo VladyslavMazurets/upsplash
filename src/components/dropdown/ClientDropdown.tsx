@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 
 import { useClickOutside } from '../../hooks/useClickOutside'
 
-import '../../styles/ClientDropdown.scss'
-
 function ClientDropdown({ setClickedOnAvatar }: any) {
 
     const domNode = useClickOutside(() => setClickedOnAvatar(false))

@@ -7,9 +7,10 @@ import { IoNotificationsSharp } from 'react-icons/io5'
 import Logo from '../assets/images/unsplash-logo.png'
 
 import Authorization from './Authorization '
-import '../styles/Navbar.scss'
+import '../styles/navbar.scss'
 import Topics from './Topics'
 import ClientDropdown from './dropdown/ClientDropdown'
+import HamburgerDropdown from './dropdown/HamburgerDropdown'
 
 const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,7 +55,7 @@ export default function Navbar() {
                         <button className="navbar-client__btn">
                             <IoNotificationsSharp />
                         </button>
-                        <div className="navbar-client__block">
+                        <div className="navbar-client__avatar">
                             <button className="navbar-client__btn"
                                 onClick={() =>
                                     setClickedOnAvatar(prev => !prev)}>
@@ -63,9 +64,12 @@ export default function Navbar() {
                             {clickedOnAvatar && <ClientDropdown
                                 setClickedOnAvatar={setClickedOnAvatar} />}
                         </div>
-                        <button className="navbar-client__btn">
-                            <RxHamburgerMenu />
-                        </button>
+                        <div className="navbar-client__hamburger">
+                            <button className="navbar-client__btn">
+                                <RxHamburgerMenu />
+                            </button>
+                            <HamburgerDropdown />
+                        </div>
                     </div>
                     <Authorization />
                 </div>

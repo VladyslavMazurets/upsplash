@@ -23,15 +23,15 @@ export default function Authorization() {
     const [getToken, { isSuccess }] = useGetTokenMutation()
 
     const getUnsplashToken = async () => {
-        const { data: { access_token } } = await getToken({
+        const data = await getToken({
             'client_id': CLIENT_ID,
             'client_secret': CLIENT_SEACRET,
             'redirect_uri': REDIRECT_URL,
             'code': code,
             'grant_type': 'authorization_code'
         }).unwrap()
-
-        dispatch(tokenSliceAction.saveToken(access_token))
+        { console.log(data) }
+        // isSuccess && dispatch(tokenSliceAction.saveToken(access_token))
     }
 
     const logOut = () => {
@@ -52,13 +52,7 @@ export default function Authorization() {
 
     // useEffect(() => {
     //     if (code)
-    //         getToken({
-    //             'client_id': CLIENT_ID,
-    //             'client_secret': CLIENT_SEACRET,
-    //             'redirect_uri': REDIRECT_URL,
-    //             'code': code,
-    //             'grant_type': 'authorization_code'
-    //         }).then(data => console.log(data))
+    //        getUnsplashToken();
     // }, [code])
 
     return (

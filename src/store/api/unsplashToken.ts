@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { IToken, TokenObject } from '../../models/models';
+import { IToken } from '../../models/models';
 
 interface IPostObj {
     client_id: string | undefined,
@@ -16,7 +16,7 @@ export const unsplashToken = createApi({
         baseUrl: 'https://unsplash.com'
     }),
     endpoints: build => ({
-        getToken: build.mutation<TokenObject<IToken>, IPostObj>({
+        getToken: build.mutation<IToken, IPostObj>({
             query: (postObj: IPostObj) => ({
                 url: '/oauth/token',
                 method: 'POST',

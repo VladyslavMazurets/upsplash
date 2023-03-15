@@ -5,11 +5,11 @@ import { RootType } from '../store/store'
 
 function Topics() {
 
-    // const token = useSelector((state: RootType) => state.autorization.token)
+    const token = useSelector((state: RootType) => state.token)
 
     return (
         <>
-            {/* <h1>Token -- {token}</h1> */}
+            <h1>Token -- {token}</h1>
         </>
     )
 }

@@ -7,8 +7,3 @@ export interface IToken {
     scope: string;
     created_at: number;
 }
-
-export interface TokenObject<T> {
-    data: T;
-}
-
