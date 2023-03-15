@@ -19,7 +19,19 @@ export default function Authorization() {
 
     const dispatch = useDispatch<RootDispatch>();
     const code = useSelector((state: RootType) => state.code)
-    const [getToken] = useGetTokenMutation()
+    const [getToken, { isSuccess, isLoading, isError }] = useGetTokenMutation()
+
+    const getUnsplashToken = async () => {
+        const { data: { access_token } } = await getToken({
+            'client_id': CLIENT_ID,
+            'client_secret': CLIENT_SEACRET,
+            'redirect_uri': REDIRECT_URL,
+            'code': code,
+            'grant_type': 'authorization_code'
+        }).unwrap()
+
+        // dispatch(codeSliceAction.saveToken({token: access_token}))
+    }
 
     const logOut = () => {
         dispatch(codeSliceAction.saveCode(''))
@@ -39,16 +51,19 @@ export default function Authorization() {
                 window.location.href = ''
                 code && window.localStorage.setItem('code', code)
             }
-
-            getToken({
-                'client_id': CLIENT_ID,
-                'client_secret': CLIENT_SEACRET,
-                'redirect_uri': REDIRECT_URL,
-                'code': code,
-                'grant_type': 'authorization_code'
-            }).then(data => console.log(data))
-
     }, [dispatch])
+
+    // useEffect(() => {
+    //     if (code)
+    //         // getToken({
+    //         //     'client_id': CLIENT_ID,
+    //         //     'client_secret': CLIENT_SEACRET,
+    //         //     'redirect_uri': REDIRECT_URL,
+    //         //     'code': code,
+    //         //     'grant_type': 'authorization_code'
+    //         // }).then(data => console.log(data))
+    //         getUnsplashToken();
+    // }, [code])
 
     return (
         <>
@@ -61,7 +76,7 @@ export default function Authorization() {
                     Logout
                 </button>
             }
-            {console.log('CODE', code)}
+            {console.log('CODE ---', code)}
         </>
     )
 }

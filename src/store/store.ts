@@ -12,7 +12,8 @@ export const store = configureStore({
     },
 
     middleware: getDefaultMiddleware =>
-        getDefaultMiddleware().concat(unsplashApi.middleware)
+        getDefaultMiddleware().concat([unsplashApi.middleware,
+        unsplashToken.middleware])
 
 })
 
