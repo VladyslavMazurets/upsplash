@@ -1,5 +1,7 @@
+@import 'ClientDropdown';
+
 $search-form-bgcolor: #eee;
-$btn-color: #767676;
+$btn-color: #555;
 
 @mixin buttonHover () {
     color: black;
@@ -102,6 +104,10 @@ $btn-color: #767676;
             align-items: center;
             padding-inline: 15px;
 
+            .navbar-client__block {
+                position: relative;
+            }
+
             .navbar-client__submit-btn {
                 background-color: inherit;
                 color: $btn-color;
@@ -122,10 +128,6 @@ $btn-color: #767676;
                 margin-top: 5px;
                 margin-right: 10px;
                 color: $btn-color;
-
-                &:nth-child(3) {
-                    font-size: 35px;
-                }
 
                 &:hover {
                     @include buttonHover()

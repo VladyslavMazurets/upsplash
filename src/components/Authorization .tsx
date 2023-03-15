@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ICode } from '../models/models';
 import { useGetTokenMutation } from '../store/api/unsplashToken';
 import { codeSliceAction } from '../store/reducers/codeSlice';
+import { tokenSliceAction } from '../store/reducers/tokenSlice';
 import { RootDispatch, RootType } from '../store/store';
 
 const CLIENT_ID = process.env.REACT_APP_ACCESS_KEY;
@@ -19,7 +20,7 @@ export default function Authorization() {
 
     const dispatch = useDispatch<RootDispatch>();
     const code = useSelector((state: RootType) => state.code)
-    const [getToken, { isSuccess, isLoading, isError }] = useGetTokenMutation()
+    const [getToken, { isSuccess }] = useGetTokenMutation()
 
     const getUnsplashToken = async () => {
         const { data: { access_token } } = await getToken({
@@ -30,7 +31,7 @@ export default function Authorization() {
             'grant_type': 'authorization_code'
         }).unwrap()
 
-        // dispatch(codeSliceAction.saveToken({token: access_token}))
+        dispatch(tokenSliceAction.saveToken(access_token))
     }
 
     const logOut = () => {
@@ -39,30 +40,25 @@ export default function Authorization() {
     }
 
     useEffect(() => {
-        const href: string = window.location.href
+        const href = window.location.href
         let code: ICode = window.localStorage.getItem('code')
 
-        if (code)
-            dispatch(codeSliceAction.saveCode(code))
-        else
-            if (!code && href) {
-                code = href.split('?').find((elem) => elem.startsWith('code'))?.split('=')[1]
-
-                window.location.href = ''
-                code && window.localStorage.setItem('code', code)
-            }
+        if (!code && href) {
+            code = href.split('?').find(e => e.startsWith('code'))?.split('=')[1]
+            code && window.localStorage.setItem('code', code)
+        }
+        code && dispatch(codeSliceAction.saveCode(code))
     }, [dispatch])
 
     // useEffect(() => {
     //     if (code)
-    //         // getToken({
-    //         //     'client_id': CLIENT_ID,
-    //         //     'client_secret': CLIENT_SEACRET,
-    //         //     'redirect_uri': REDIRECT_URL,
-    //         //     'code': code,
-    //         //     'grant_type': 'authorization_code'
-    //         // }).then(data => console.log(data))
-    //         getUnsplashToken();
+    //         getToken({
+    //             'client_id': CLIENT_ID,
+    //             'client_secret': CLIENT_SEACRET,
+    //             'redirect_uri': REDIRECT_URL,
+    //             'code': code,
+    //             'grant_type': 'authorization_code'
+    //         }).then(data => console.log(data))
     // }, [code])
 
     return (
@@ -76,7 +72,7 @@ export default function Authorization() {
                     Logout
                 </button>
             }
-            {console.log('CODE ---', code)}
+            {console.log('CODE', code)}
         </>
     )
 }

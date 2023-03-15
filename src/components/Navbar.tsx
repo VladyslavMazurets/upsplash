@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { BsSearch } from 'react-icons/bs'
 import { RxAvatar, RxHamburgerMenu } from 'react-icons/rx'
@@ -9,12 +9,16 @@ import Logo from '../assets/images/unsplash-logo.png'
 import Authorization from './Authorization '
 import '../styles/Navbar.scss'
 import Topics from './Topics'
+import ClientDropdown from './dropdown/ClientDropdown'
 
 const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 }
 
 export default function Navbar() {
+
+    const [clickedOnAvatar, setClickedOnAvatar] = useState(false);
+
     return (
         <>
             <div className="navbar">
@@ -50,9 +54,15 @@ export default function Navbar() {
                         <button className="navbar-client__btn">
                             <IoNotificationsSharp />
                         </button>
-                        <button className="navbar-client__btn">
-                            <RxAvatar />
-                        </button>
+                        <div className="navbar-client__block">
+                            <button className="navbar-client__btn"
+                                onClick={() =>
+                                    setClickedOnAvatar(prev => !prev)}>
+                                <RxAvatar />
+                            </button>
+                            {clickedOnAvatar && <ClientDropdown
+                                setClickedOnAvatar={setClickedOnAvatar} />}
+                        </div>
                         <button className="navbar-client__btn">
                             <RxHamburgerMenu />
                         </button>

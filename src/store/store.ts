@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { unsplashApi } from './api/unsplashApi';
 import { unsplashToken } from './api/unsplashToken';
 import { codeSlice } from './reducers/codeSlice';
+import { tokenSlice } from './reducers/tokenSlice';
 
 export const store = configureStore({
     reducer: {
         [unsplashApi.reducerPath]: unsplashApi.reducer,
         [unsplashToken.reducerPath]: unsplashToken.reducer,
         [codeSlice.name]: codeSlice.reducer,
+        [tokenSlice.name]: tokenSlice.reducer
     },
 
     middleware: getDefaultMiddleware =>
