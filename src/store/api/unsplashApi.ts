@@ -11,7 +11,7 @@ export const unsplashApi = createApi({
         baseUrl: 'https://api.unsplash.com/'
     }),
     endpoints: build => ({
-        getTopics: build.query<string, any>({
+        getTopics: build.query<ITopics, any>({
             query: (topics: ITopics) => {
                 const { url, token } = topics;
                 return {

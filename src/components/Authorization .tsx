@@ -36,7 +36,8 @@ export default function Authorization() {
 
     const logOut = () => {
         dispatch(codeSliceAction.saveCode(''))
-        window.localStorage.removeItem('code')
+        localStorage.removeItem('code')
+        localStorage.removeItem('token')
     }
 
     useEffect(() => {
@@ -52,9 +53,9 @@ export default function Authorization() {
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-        // if (code && !token){
-        // getUnsplashToken();
-        // }
+        if (code && !token){
+        getUnsplashToken();
+        }
         dispatch(tokenSliceAction.saveToken(token!))
     }, [code])
 

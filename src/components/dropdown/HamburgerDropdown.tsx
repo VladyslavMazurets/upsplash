@@ -18,7 +18,7 @@ import { communityData } from '../../assets/constData/communityData'
 import { useClickOutside } from '../../hooks/useClickOutside'
 
 
-function HamburgerDropdown({ setClickOnHamburger }: (a: boolean) => void) {
+function HamburgerDropdown({ setClickOnHamburger }:any) {
 
     const domNode = useClickOutside(() => setClickOnHamburger(false))
 
