@@ -20,7 +20,8 @@ export default function Authorization() {
 
     const dispatch = useDispatch<RootDispatch>();
     const code = useSelector((state: RootType) => state.code)
-    const [getToken, { isSuccess }] = useGetTokenMutation()
+    const token = useSelector((state:RootType) => state.token)
+    const [getToken] = useGetTokenMutation()
 
     const getUnsplashToken = async () => {
         const data = await getToken({
@@ -30,8 +31,8 @@ export default function Authorization() {
             'code': code,
             'grant_type': 'authorization_code'
         }).unwrap()
-        { console.log(data) }
-        // isSuccess && dispatch(tokenSliceAction.saveToken(access_token))
+
+       dispatch(tokenSliceAction.saveToken(data.access_token))
     }
 
     const logOut = () => {
@@ -50,10 +51,10 @@ export default function Authorization() {
         code && dispatch(codeSliceAction.saveCode(code))
     }, [dispatch])
 
-    // useEffect(() => {
-    //     if (code)
-    //        getUnsplashToken();
-    // }, [code])
+    useEffect(() => {
+        if (code && !token)
+           getUnsplashToken();
+    }, [code])
 
     return (
         <>
@@ -66,7 +67,6 @@ export default function Authorization() {
                     Logout
                 </button>
             }
-            {console.log('CODE', code)}
         </>
     )
 }
