@@ -4,8 +4,8 @@ export const useClickOutside = (handler: () => void) => {
     const domNode = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const maybeHandler = (event: any) => {
-            if (!domNode.current!.contains(event.target)) {
+        const maybeHandler = ({target}: MouseEvent) => {
+            if (!domNode.current?.contains(target as Node)) {
                 handler();
             }
         };

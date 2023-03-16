@@ -19,6 +19,7 @@ const handleSearch = (e: React.FormEvent) => {
 export default function Navbar() {
 
     const [clickedOnAvatar, setClickedOnAvatar] = useState(false);
+    const [clickOnHamburger, setClickOnHamburger] = useState(false);
 
     return (
         <>
@@ -65,10 +66,12 @@ export default function Navbar() {
                                 setClickedOnAvatar={setClickedOnAvatar} />}
                         </div>
                         <div className="navbar-client__hamburger">
-                            <button className="navbar-client__btn">
+                            <button className="navbar-client__btn"
+                                onClick={() => setClickOnHamburger(prev => !prev)}>
                                 <RxHamburgerMenu />
                             </button>
-                            <HamburgerDropdown />
+                            {clickOnHamburger && <HamburgerDropdown
+                                setClickOnHamburger={setClickOnHamburger} />}
                         </div>
                     </div>
                     <Authorization />
