@@ -76,7 +76,9 @@ export default function Navbar() {
                     </div>
                     <Authorization />
                 </div>
-                <Topics />
+                <div className="topics">
+                    <Topics />
+                </div>
             </div>
         </>
     )

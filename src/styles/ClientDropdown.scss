@@ -5,12 +5,13 @@ $btn-color: #555;
     right: 25%;
     top: 115%;
     width: 250px;
-    z-index: 100;
+    z-index: 150;
 
     display: flex;
     flex-direction: column;
     padding-block: 12px;
 
+    background-color: white;
     box-shadow: 10px 10px 40px 1px #d1d1d1;
     border: 1px solid #d1d1d1;
     border-radius: 4%;

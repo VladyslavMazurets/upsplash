@@ -1,0 +1,42 @@
+@mixin topics-btn () {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+
+    display: inline-block;
+    padding-block: 23px;
+    margin-right: 25px;
+    border-bottom: 3px solid white;
+
+    &:hover {
+        color: black;
+        transition: 0.3s;
+    }
+
+    &.active {
+        color: black;
+        border-bottom: 3px solid black;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.topics-editior {
+    .topics-editior__btn {
+        @include topics-btn();
+    }
+}
+
+.topics-line {
+    border-left: 1.5px solid #d1d1d1;
+    height: 42px;
+    margin-inline: 20px;
+}
+
+.topics-list {
+    .topics-list__btn{
+        @include topics-btn();
+    }
+}

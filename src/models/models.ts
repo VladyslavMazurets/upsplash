@@ -206,8 +206,8 @@ export interface ITopics {
     preview_photos: PreviewPhoto[];
 }
 
-export interface ITopicsRoot {
-    [key: string]: ITopics
-}
+// export interface ITopicsRoot {
+//     [key: string]: ITopics[]
+// }
 
 

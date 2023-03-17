@@ -4,7 +4,7 @@ $btn-color: #555;
 @mixin buttonHover () {
     color: black;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 @mixin customPadding ($p-block, $p-inline, $m-right) {
@@ -16,20 +16,26 @@ $btn-color: #555;
 }
 
 .navbar {
+    width: 97%;
     position: fixed;
-    width: auto;
-    height: 50px;
-    padding-block: 15px;
+    z-index: 100;
+    padding-top: 15px;
     padding-inline: 30px;
 
     display: flex;
     flex-direction: column;
+
+    background-color: white;
+    box-shadow: 10px 10px 40px 1px #d1d1d1;
+    border: 1px solid inherit;
 
     .navbar-search-block {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
+        padding-bottom: 10px;
 
         .navbar-search {
             display: flex;
@@ -171,5 +177,11 @@ $btn-color: #555;
                 background-color: rgb(200, 255, 200);
             }
         }
+    }
+
+    .topics {
+        display: flex;
+        align-items: center;
+        @import './topics.scss';
     }
 }

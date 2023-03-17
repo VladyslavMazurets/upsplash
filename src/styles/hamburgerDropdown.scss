@@ -38,6 +38,7 @@ $btn-color: #555;
 
     padding: 20px 32px;
 
+    background-color: white;
     box-shadow: 10px 10px 40px 1px #d1d1d1;
     border: 1px solid #d1d1d1;
     border-radius: 4%;
@@ -113,6 +114,7 @@ $btn-color: #555;
         align-items: center;
         justify-content: space-between;
         padding-inline: 31px;
+
         .hamburger-dropdown-social__btn {
             background: inherit;
             border: none;
@@ -130,7 +132,8 @@ $btn-color: #555;
                 }
             }
         }
-        .hamburger-dropdown-created{
+
+        .hamburger-dropdown-created {
             font-size: 17px;
             color: $btn-color;
         }
