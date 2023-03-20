@@ -205,9 +205,3 @@ export interface ITopics {
     cover_photo: CoverPhoto;
     preview_photos: PreviewPhoto[];
 }
-
-// export interface ITopicsRoot {
-//     [key: string]: ITopics[]
-// }
-
-

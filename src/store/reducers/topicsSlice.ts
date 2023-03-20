@@ -8,7 +8,7 @@ export const topicsSlice = createSlice({
     name: 'topics',
     initialState,
     reducers: {
-        saveTopicsData(state, action) {
+        saveTopicsData(state, action: PayloadAction<ITopics[]>) {
             return state = action.payload
         }
     }

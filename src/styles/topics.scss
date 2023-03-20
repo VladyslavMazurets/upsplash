@@ -1,7 +1,8 @@
-@mixin topics-btn () {
+@mixin topics-btn ($mr) {
     text-decoration: none;
     color: #555;
     font-size: 18px;
+    min-width: max-content;
 
     display: inline-block;
     padding-block: 23px;
@@ -19,13 +20,28 @@
     }
 
     &:last-child {
-        margin-right: 0;
+        margin-right: $mr;
+    }
+}
+
+@mixin arrow-icon () {
+    color: #555;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: white;
+    box-shadow: 20px 2px 20px 35px white;
+
+    &:hover {
+        color: black;
+        transition: 0.3s;
     }
 }
 
 .topics-editior {
+    display: flex;
+
     .topics-editior__btn {
-        @include topics-btn();
+        @include topics-btn(0);
     }
 }
 
@@ -36,7 +52,41 @@
 }
 
 .topics-list {
-    .topics-list__btn{
-        @include topics-btn();
+    flex: 1;
+    display: flex;
+    max-width: 90%;
+    position: relative;
+
+    .topics-list__container {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        overflow-x: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        margin-right: 1rem;
+
+        .topics-list__btn {
+            @include topics-btn(25px);
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .topics-list__arrows {
+        width: 98%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-right: 2rem;
+        position: absolute;
+        bottom: 36%;
+
+        .topics-list-icon {
+            @include arrow-icon();
+        }
     }
 }
