@@ -24,7 +24,13 @@
     }
 }
 
-@mixin arrow-icon () {
+@mixin arrow-icon ($top, $left, $right, $bottom) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+
     color: #555;
     font-size: 1.2rem;
     cursor: pointer;
@@ -76,17 +82,13 @@
     }
 
     .topics-list__arrows {
-        width: 98%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        
+        .topics-list-icon__left {
+            @include arrow-icon(36%, 0, 0, 10%);
+        }
 
-        padding-right: 2rem;
-        position: absolute;
-        bottom: 36%;
-
-        .topics-list-icon {
-            @include arrow-icon();
+        .topics-list-icon__right {
+            @include arrow-icon(36%, 97%, 0, 10%)
         }
     }
 }
