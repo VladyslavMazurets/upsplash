@@ -60,14 +60,16 @@ function Topics() {
                         </NavLink>
                     )}
                 </div>
-                <div className="topics-list__arrows">
-                    <SlArrowLeft
-                        className="topics-list-icon__left"
-                        onClick={() => scroll('left')} />
-                    <SlArrowRight
-                        className="topics-list-icon__right"
-                        onClick={() => scroll('right')} />
-                </div>
+                { window.pageXOffset <= 0 &&
+                <SlArrowLeft
+                    className="topics-list-icon__left"
+                    onClick={() => scroll('left')} />
+                }
+                { window.pageXOffset >= 746 &&
+                <SlArrowRight
+                    className="topics-list-icon__right"
+                    onClick={() => scroll('right')} />
+                } 
             </div>
         </>
     )
