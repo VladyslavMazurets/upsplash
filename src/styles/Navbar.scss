@@ -16,8 +16,12 @@ $btn-color: #555;
 }
 
 .navbar {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+   
     width: 96.9%;
-    position: sticky;
     z-index: 100;
     padding-top: 15px;
     padding-inline: 30px;

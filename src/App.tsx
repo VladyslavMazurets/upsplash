@@ -10,7 +10,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        {/* <Route path="/editorial" element={<Editorial />}/> */}
+        <Route path="/editorial" element={<Editorial />} />
       </Routes>
     </>
   );

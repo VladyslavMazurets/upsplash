@@ -1,8 +1,21 @@
 .header {
-    width: 97%;
-    height: 630px;
+    position: relative;
+    width: 100%;
+    height: 750px;
+    margin-top: 144px;
 
     .header__img {
-        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .header__container {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+
+        color: white;
+        font-size: 50px;
     }
 }
