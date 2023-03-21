@@ -1,10 +1,10 @@
-import React, { MutableRefObject, useEffect, useRef } from 'react'
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 
 import { ITopics } from '../models/models'
-import { useGetTopicsQuery } from '../store/api/unsplashApi'
+import { useGetApiDataQuery } from '../store/api/unsplashApi'
 import { topicsSliceAction } from '../store/reducers/topicsSlice'
 
 import { RootType } from '../store/store'
@@ -13,21 +13,25 @@ function Topics() {
 
     const dispatch = useDispatch()
     const token = useSelector((state: RootType) => state.token)
-    const { data, isSuccess, isLoading } = useGetTopicsQuery({
+
+    const scrollRef = useRef() as MutableRefObject<HTMLInputElement>;
+    const [scrollBarPosition, setScrollBarPosition] = useState(0);
+    const { data, isSuccess, isLoading } = useGetApiDataQuery({
         url: 'topics?per_page=20', token
     })
-    const scrollRef = useRef() as MutableRefObject<HTMLInputElement>;
 
     const scroll = (direction: string) => {
         const { current } = scrollRef;
 
         if (current && direction === 'left') {
-            current.scrollLeft -= 200
+            current.scrollLeft -= 250
+            setScrollBarPosition(current.scrollLeft)
             { console.log('LEFT', current.scrollLeft) }
 
         }
         else {
-            current.scrollLeft += 200
+            current.scrollLeft += 250
+            setScrollBarPosition(current.scrollLeft)
             { console.log('RIGHT', current.scrollLeft) }
         }
     }
@@ -38,13 +42,11 @@ function Topics() {
 
     return (
         <>
-            {isSuccess && console.log(data)}
-
             <div className="topics-editior">
-                <NavLink to="/" className="topics-editior__btn">
+                <NavLink to="/editorial" className="topics-editior__btn">
                     Editorial
                 </NavLink>
-                <NavLink to="/" className="topics-editior__btn">
+                <NavLink to="/following" className="topics-editior__btn">
                     Following
                 </NavLink>
             </div>
@@ -60,16 +62,16 @@ function Topics() {
                         </NavLink>
                     )}
                 </div>
-                { window.pageXOffset <= 0 &&
-                <SlArrowLeft
-                    className="topics-list-icon__left"
-                    onClick={() => scroll('left')} />
+                {scrollBarPosition !== 0 &&
+                    <SlArrowLeft
+                        className="topics-list-icon__left"
+                        onClick={() => scroll('left')} />
                 }
-                { window.pageXOffset >= 746 &&
-                <SlArrowRight
-                    className="topics-list-icon__right"
-                    onClick={() => scroll('right')} />
-                } 
+                {scrollBarPosition !== 746 &&
+                    <SlArrowRight
+                        className="topics-list-icon__right"
+                        onClick={() => scroll('right')} />
+                }
             </div>
         </>
     )

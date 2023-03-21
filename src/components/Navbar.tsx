@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, MutableRefObject } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { BsSearch } from 'react-icons/bs'
 import { RxAvatar, RxHamburgerMenu } from 'react-icons/rx'
@@ -11,6 +11,7 @@ import '../styles/navbar.scss'
 import Topics from './Topics'
 import ClientDropdown from './dropdown/ClientDropdown'
 import HamburgerDropdown from './dropdown/HamburgerDropdown'
+import SearchDropdown from './dropdown/SearchDropdown'
 
 const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +22,9 @@ export default function Navbar() {
     const [clickedOnAvatar, setClickedOnAvatar] = useState(false);
     const [clickOnHamburger, setClickOnHamburger] = useState(false);
 
+    const [isFocused, setIsFocused] = useState(false);
+    const searchInput = useRef(null);
+
     return (
         <>
             <div className="navbar">
@@ -30,13 +34,18 @@ export default function Navbar() {
                             <img className="navbar_logo" src={Logo} alt="Logo"
                                 width="40px" height="40px" />
                         </Link>
-                        <form onSubmit={handleSearch} className="search-form">
-                            <button type="submit" className="search-form__button">
-                                <BsSearch />
-                            </button>
-                            <input className="search-form__input" type="text"
-                                placeholder="Search high-resolution images" required />
-                        </form>
+                        <div className="navbar-search-container">
+                            <form onSubmit={handleSearch} className="search-form">
+                                <button type="submit" className="search-form__button">
+                                    <BsSearch />
+                                </button>
+                                <input className="search-form__input" type="text"
+                                    placeholder="Search high-resolution images"
+                                    ref={searchInput} onFocus={() => setIsFocused(true)}
+                                    onBlur={() => setIsFocused(false)} required />
+                            </form>
+                            {isFocused && <SearchDropdown />}
+                        </div>
                         <div className="navbar-search__btns">
                             <NavLink className="navbar-search__btn" to="">
                                 Advertise

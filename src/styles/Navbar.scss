@@ -45,46 +45,49 @@ $btn-color: #555;
                 margin-right: 20px;
             }
 
-            .search-form {
+            .navbar-search-container {
                 position: relative;
 
-                display: flex;
-                align-items: center;
+                .search-form {
+                    position: relative;
 
-                .search-form__button {
-                    position: absolute;
-                    top: 27%;
-                    left: 1.5%;
+                    display: flex;
+                    align-items: center;
 
-                    font-size: 19px;
+                    .search-form__button {
+                        position: absolute;
+                        top: 27%;
+                        left: 1.5%;
 
-                    border: 0;
-                    color: $btn-color;
-                    background-color: inherit;
+                        font-size: 19px;
 
-                    &:hover {
-                        @include buttonHover()
+                        border: 0;
+                        color: $btn-color;
+                        background-color: inherit;
+
+                        &:hover {
+                            @include buttonHover()
+                        }
+                    }
+
+                    .search-form__input {
+                        width: 900px;
+
+                        border-radius: 24px;
+                        border: inherit;
+                        background-color: $search-form-bgcolor;
+
+                        @include customPadding(12px, 48px, 15px);
+
+                        &:focus {
+                            background-color: white;
+                        }
                     }
                 }
 
-                .search-form__input {
-                    width: 900px;
-
-                    border-radius: 24px;
-                    border: inherit;
-                    background-color: $search-form-bgcolor;
-
-                    @include customPadding(12px, 48px, 15px);
-
-                    &:focus {
-                        border: 0.5px solid $search-form-bgcolor;
-                        background-color: white;
-                        border-width: 0.5px;
-                        transition: 0.5s;
-                    }
-                }
-
+                @import 'searchDropdown.scss';
             }
+
 
             .navbar-search__btns {
                 margin-left: 32px;

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { ITopics } from '../../models/models';
 
-interface ITopicsToken {
+interface IOptions {
     url: string,
     token: string
 }
@@ -13,9 +13,9 @@ export const unsplashApi = createApi({
         baseUrl: 'https://api.unsplash.com/'
     }),
     endpoints: build => ({
-        getTopics: build.query<ITopics[], ITopicsToken>({
-            query: (topics: ITopicsToken) => {
-                const { url, token } = topics;
+        getApiData: build.query<ITopics[], IOptions>({
+            query: (options: IOptions) => {
+                const { url, token } = options;
                 return {
                     url,
                     headers: {
@@ -28,4 +28,4 @@ export const unsplashApi = createApi({
     })
 })
 
-export const { useGetTopicsQuery } = unsplashApi;
+export const { useGetApiDataQuery } = unsplashApi;
