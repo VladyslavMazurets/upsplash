@@ -1,12 +1,13 @@
 .search-dropdown {
     position: absolute;
     z-index: 100;
-    width: 999px;
+    width: 995px;
     height: max-content;
 
-    border: 1px solid #555;
+    border: 1px solid #d1d1d1;
     border-radius: 8px;
     background: white;
+    box-shadow: 10px 10px 40px 1px #d1d1d1;
 
     margin-top: 5px;
 
@@ -15,10 +16,14 @@
         flex-direction: column;
         justify-content: space-between;
 
-        padding: 8px 16px;
+        padding: 0 22px;
 
         .search-dropdown__item {
-            margin-bottom: 22px;
+            margin-bottom: 16px;
+
+            &:last-child {
+                margin-bottom: 25px;
+            }
             .search-dropdown__title {
                 font-size: 18px;
                 font-weight: 500;

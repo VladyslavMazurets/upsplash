@@ -199,9 +199,10 @@ export interface ITopics {
     total_photos: number;
     current_user_contributions: any[];
     total_current_user_submissions: object;
-    links: Links;
+    links: Links3;
     status: string;
     owners: Owner[];
     cover_photo: CoverPhoto;
     preview_photos: PreviewPhoto[];
+    urls?: Urls
 }
