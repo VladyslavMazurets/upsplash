@@ -12,13 +12,12 @@
     }
 
     .header__container {
-
         .header__bg {
             position: absolute;
             width: 100%;
             height: 100%;
             background-color: black;
-            opacity: 0.2;
+            opacity: 0.4;
         }
 
         .header__content {
@@ -49,7 +48,7 @@
             .header__btn {
                 font-size: 19px;
 
-                margin-top: 40px;
+                margin-top: 42px;
                 padding: 16px 20px;
                 max-width: max-content;
 
@@ -60,6 +59,32 @@
                 &:hover {
                     cursor: pointer;
                 }
+            }
+        }
+
+        .header__footer {
+            position: absolute;
+            bottom: 4%;
+            left: 1%;
+
+            width: 56%;
+            font-size: 17px;
+            color: #ffffff8c;
+
+            display: flex;
+            justify-content: space-between;
+
+            .footer__link {
+                text-decoration: none;
+                color: #fffc;
+
+                &:hover {
+                    color: white;
+                }
+            }
+
+            .footer__photo {
+
             }
         }
     }
