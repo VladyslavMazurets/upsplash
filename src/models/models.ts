@@ -204,5 +204,6 @@ export interface ITopics {
     owners: Owner[];
     cover_photo: CoverPhoto;
     preview_photos: PreviewPhoto[];
-    urls?: Urls
+    urls?: Urls;
+    user?: User;
 }

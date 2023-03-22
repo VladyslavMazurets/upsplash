@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { useGetApiDataQuery } from '../store/api/unsplashApi'
 import { RootType } from '../store/store'
-import '../styles/header.scss'
+import '../styles/editorial.scss'
 
 function Editorial() {
 
@@ -24,20 +24,20 @@ function Editorial() {
                     <div className="header__container">
                         <div className="header__bg" />
                         <div className="header__content">
-                            <p className="header__title"> 3D Renders </p>
+                            <p className="header__title"> Upsplash </p>
                             <span className="header__subtitle">
-                                The Unsplash community continues to push the boundaries of creativity through 3D Renders. From abstract worlds to photo-realistic interiors, this category celebrates exciting 3-dimensional images designed in the software of your choice and rendered into JPEG images.
+                                The internet’s source for visuals.
+                                <br />Powered by creators everywhere.
                             </span>
-                            <button className="header__btn">
-                                Submit to <strong>3D Renders</strong>
-                            </button>
                         </div>
 
                         <div className="header__footer">
                             <div className="footer__photo">
                                 <Link to="" className="footer__link">Photo</Link>
                                 <span> by </span>
-                                <Link to="" className="footer__link">Guns</Link>
+                                <Link to="" className="footer__link">
+                                    {data[0].user?.username}
+                                </Link>
                             </div>
                             <div className="footer__license">
                                 <span> Read more about the </span>
