@@ -17,7 +17,7 @@ $btn-color: #555;
 
 .navbar {
     position: fixed;
-    overflow: hidden;
+    z-index: 1000;
     top: 0;
     left: 0;
    

@@ -43,7 +43,7 @@ function Topics() {
     return (
         <>
             <div className="topics-editior">
-                <NavLink to="/editorial" className="topics-editior__btn">
+                <NavLink to="/" className="topics-editior__btn">
                     Editorial
                 </NavLink>
                 <NavLink to="/following" className="topics-editior__btn">
