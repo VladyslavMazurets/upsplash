@@ -10,7 +10,7 @@ import { RootDispatch, RootType } from '../store/store';
 const CLIENT_ID = process.env.REACT_APP_ACCESS_KEY;
 const CLIENT_SEACRET = process.env.REACT_APP_SECRET_KEY;
 const AUTORIZE_URL = 'https://unsplash.com/oauth/authorize';
-const REDIRECT_URL = 'http://localhost:3000';
+const REDIRECT_URL = 'https://upsplash.vercel.app';
 
 const loginURL = `${AUTORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=
 ${REDIRECT_URL}&scope=public+read_user+read_photos&response_type=code`
