@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { useGetApiDataQuery } from '../store/api/unsplashApi'
 import { RootType } from '../store/store'
-import '../styles/editorial.scss'
+import '../styles/Editorial.scss'
 
 function Editorial() {
 

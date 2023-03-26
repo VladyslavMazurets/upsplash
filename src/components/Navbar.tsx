@@ -7,7 +7,7 @@ import { IoNotificationsSharp } from 'react-icons/io5'
 import Logo from '../assets/images/unsplash-logo.png'
 
 import Authorization from './Authorization '
-import '../styles/navbar.scss'
+import '../styles/Navbar.scss'
 import Topics from './Topics'
 import ClientDropdown from './dropdown/ClientDropdown'
 import HamburgerDropdown from './dropdown/HamburgerDropdown'

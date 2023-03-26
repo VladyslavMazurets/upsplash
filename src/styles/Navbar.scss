@@ -189,6 +189,6 @@ $btn-color: #555;
     .topics {
         display: flex;
         align-items: center;
-        @import './topics.scss';
+        @import '../styles/Topics.scss';
     }
 }

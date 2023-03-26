@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import '../styles/topicsHeader.scss'
+import '../styles/TopicsHeader.scss'
 
 function TopicsHeader() {
     return (
