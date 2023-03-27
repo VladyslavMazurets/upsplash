@@ -26,13 +26,11 @@ function Topics() {
         if (current && direction === 'left') {
             current.scrollLeft -= 250
             setScrollBarPosition(current.scrollLeft)
-            { console.log('LEFT', current.scrollLeft) }
 
         }
         else {
             current.scrollLeft += 250
             setScrollBarPosition(current.scrollLeft)
-            { console.log('RIGHT', current.scrollLeft) }
         }
     }
 
