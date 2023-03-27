@@ -10,7 +10,7 @@ import { RootDispatch, RootType } from '../store/store';
 const CLIENT_ID ='UQZCNsUKPoOkiCEIV2kuZm42ttdwyrVJnQkwPcmLdxM';
 const CLIENT_SEACRET = 'EwysqYK-nHfIbi-MEoOvJRheLXb0zh9eQpH72zPaudE';
 const AUTORIZE_URL = 'https://unsplash.com/oauth/authorize';
-const REDIRECT_URL = 'https://upsplash.vercel.app';
+const REDIRECT_URL = 'https://upsplash.vercel.app'; // http://localhost:3000
 
 const loginURL = `${AUTORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=
 ${REDIRECT_URL}&scope=public+read_user+read_photos&response_type=code`

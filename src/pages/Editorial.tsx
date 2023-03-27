@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { ITopics } from '../models/models'
 import { useGetApiDataQuery } from '../store/api/unsplashApi'
 import { RootType } from '../store/store'
 import '../styles/Editorial.scss'
@@ -9,18 +10,22 @@ import '../styles/Editorial.scss'
 function Editorial() {
 
     const token = useSelector((state: RootType) => state.token)
-    const { data, isSuccess } = useGetApiDataQuery({
+    const { data: header, isSuccess: headerSuccess } = useGetApiDataQuery({
         url: 'photos/random?orientation=landscape&count=1',
+        token
+    })
+    const { data: photos, isSuccess: photosSuccess } = useGetApiDataQuery({
+        url: 'photos/random?orientation=landscape&count=30',
         token
     })
 
     return (
         <>
-            {isSuccess &&
+            {headerSuccess &&
                 <>
                     <div className="header">
                         <img
-                            src={data[0].urls?.regular}
+                            src={header[0].urls?.regular}
                             alt="" className="header__img" />
                         <div className="header__container">
                             <div className="header__bg" />
@@ -37,7 +42,7 @@ function Editorial() {
                                     <Link to="" className="footer__link">Photo</Link>
                                     <span> by </span>
                                     <Link to="" className="footer__link">
-                                        {data[0].user?.username}
+                                        {header[0].user?.username}
                                     </Link>
                                 </div>
                                 <div className="footer__license">
@@ -54,11 +59,18 @@ function Editorial() {
 
                     <div className="cards">
                         <div className="cards__container">
-
+                            {photos?.map((photo: ITopics) =>
+                                <div key={photo.id} className="card">
+                                    <img src={photo.urls!.regular}
+                                        alt={`Photo by ${photo.user!.name}`} 
+                                        />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </>
             }
+            {console.log(photos)}
         </>
     )
 }
