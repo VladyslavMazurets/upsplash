@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Mesonry from 'react-masonry-css'
 
 import { ITopics } from '../models/models'
 import { useGetApiDataQuery } from '../store/api/unsplashApi'
@@ -58,15 +59,17 @@ function Editorial() {
                     </div>
 
                     <div className="cards">
-                        <div className="cards__container">
+                        <Mesonry breakpointCols={{ default: 3, 1100: 3, 700: 2, 500: 1 }}
+                            className="photo-grid"
+                            columnClassName="photo-grid__column">
                             {photos?.map((photo: ITopics) =>
-                                <div key={photo.id} className="card">
+                                <div key={photo.id} className="photo">
                                     <img src={photo.urls!.regular}
-                                        alt={`Photo by ${photo.user!.name}`} 
-                                        />
+                                        alt={`Photo by ${photo.user!.name}`}
+                                    />
                                 </div>
                             )}
-                        </div>
+                        </Mesonry>
                     </div>
                 </>
             }

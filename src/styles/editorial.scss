@@ -79,24 +79,24 @@
     margin-top: 60px;
 
     max-width: 85%;
-    height: 100vh;
 
-    .cards__container {
+    .photo-grid {
         width: 100%;
         padding-inline: 20px;
 
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        justify-items: start;
-        align-items: start;
-        grid-gap: 1em;
+        display: flex;
+        width: auto;
 
-        .card {
-            height: max-content;
-            width: max-content;
+        .photo-grid__column {
+            padding-left: 10px;
+            background-clip: padding-box;
+        }
+
+        .photo {
             img {
                 width: 100%;
-                max-width: 500px;
+                height: 100%;
+                object-fit: fill;
             }
         }
     }
