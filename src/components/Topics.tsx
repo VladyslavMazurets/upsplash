@@ -52,7 +52,11 @@ function Topics() {
       <div className="topics-list">
         <div className="topics-list__container" ref={scrollRef}>
           {data?.map((item: ITopics) => (
-            <NavLink key={item.id} to={item.title} className="topics-list__btn">
+            <NavLink
+              key={item.id}
+              to={item.title?.toLowerCase()}
+              className="topics-list__btn"
+            >
               {item.title}
             </NavLink>
           ))}

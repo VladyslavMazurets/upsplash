@@ -13,10 +13,6 @@ function Editorial() {
     url: 'photos/random?orientation=landscape&count=1',
     token,
   });
-  const { data: photos, isSuccess: photosSuccess } = useGetApiDataQuery({
-    url: 'photos?page=10&per_page=50&order_by=popular',
-    token,
-  });
 
   return (
     <>
@@ -60,10 +56,9 @@ function Editorial() {
             </div>
           </div>
 
-          <PhotoCards photos={photos!} />
+          <PhotoCards />
         </>
       )}
-      {console.log(photos)}
     </>
   );
 }
