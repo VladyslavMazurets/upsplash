@@ -4,7 +4,14 @@
         "plugin:react-hooks/recommended",
         "plugin:react/recommended",
         "react-app",
-        "react-app/jest"
+        "react-app/jest",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
         "no-console": 1,

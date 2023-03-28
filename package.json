@@ -25,7 +25,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint -c .eslintrc --ext .ts,.tsx .",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 80
   },
   "browserslist": {
     "production": [
@@ -41,6 +47,9 @@
   },
   "devDependencies": {
     "@types/node-sass": "^4.11.3",
-    "node-sass": "^7.0.3"
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "node-sass": "^7.0.3",
+    "prettier": "2.8.7"
   }
 }

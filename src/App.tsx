@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Editorial from './pages/Editorial';
 
 function App() {
-
   return (
     <>
       <Navbar />
