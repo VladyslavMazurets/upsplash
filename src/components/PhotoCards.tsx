@@ -1,7 +1,6 @@
 import React, { MutableRefObject, useRef, useEffect, useState } from 'react';
 import Mesonry from 'react-masonry-css';
 import { useSelector } from 'react-redux';
-import { PropagateLoader } from 'react-spinners';
 
 import '../styles/PhotoCards.scss';
 import { ITopics } from '../models/models';
@@ -26,11 +25,14 @@ function PhotoCards() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 4000 && scrollBarPosition + 800 < window.scrollY) {
+      if (window.scrollY > 4000 && scrollBarPosition + 800 < window.scrollY) {
         setScrollBarPosition(window.scrollY);
       }
     };
-    console.log('Hello');
+
+    console.log(scrollBarPosition);
+    setPage((prevState) => prevState + 1);
+    console.log(window.innerHeight + document.documentElement.scrollTop);
 
     window.addEventListener('scroll', handleScroll);
 
@@ -38,8 +40,6 @@ function PhotoCards() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrollBarPosition]);
-
-  isLoading && <PropagateLoader color="#000000" />;
 
   return (
     <>
@@ -59,7 +59,6 @@ function PhotoCards() {
           ))}
         </Mesonry>
       </div>
-      {console.log('Scroll Position - ', scrollBarPosition)}
     </>
   );
 }

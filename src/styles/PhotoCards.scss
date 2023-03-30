@@ -6,17 +6,16 @@
 
     .photo-grid {
         width: 100%;
-        padding-inline: 20px;
 
         display: flex;
         width: auto;
 
         .photo-grid__column {
-            padding-left: 10px;
             background-clip: padding-box;
         }
 
         .photo {
+            margin: 20px;
             img {
                 width: 100%;
                 height: 100%;

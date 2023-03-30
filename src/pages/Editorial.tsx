@@ -3,20 +3,24 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import PhotoCards from '../components/PhotoCards';
+import Spinners from '../components/Spinners';
 import { useGetApiDataQuery } from '../store/api/unsplashApi';
 import { RootType } from '../store/store';
 import '../styles/Editorial.scss';
 
 function Editorial() {
   const token = useSelector((state: RootType) => state.token);
-  const { data: header, isSuccess: headerSuccess } = useGetApiDataQuery({
+  // eslint-disable-next-line prettier/prettier
+  const { data: header, isSuccess, isLoading } = useGetApiDataQuery({
     url: 'photos/random?orientation=landscape&count=1',
     token,
   });
 
+  isLoading && <Spinners />;
+
   return (
     <>
-      {headerSuccess && (
+      {isSuccess && (
         <>
           <div className="header">
             <img src={header[0].urls?.regular} alt="" className="header__img" />

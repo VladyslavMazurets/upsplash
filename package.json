@@ -30,10 +30,7 @@
     "lint": "eslint -c .eslintrc --ext .ts,.tsx .",
     "lint:fix": "npm run lint -- --fix"
   },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 80
-  },
+  
   "browserslist": {
     "production": [
       ">0.2%",
