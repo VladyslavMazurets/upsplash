@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiArrowTrendingUp } from 'react-icons/hi2';
 
-import {
-  trendingCollections,
-  trendingSearches,
-  trendingTopics,
-} from '../../assets/constData/searchDropdowndata';
+import { trendingCollections, trendingSearches, trendingTopics } from '../../assets/constData/searchDropdowndata';
 
 interface ITrending {
   id: number;

@@ -30,13 +30,7 @@ export default function Navbar() {
         <div className="navbar-search-block">
           <div className="navbar-search">
             <Link to="/">
-              <img
-                className="navbar_logo"
-                src={Logo}
-                alt="Logo"
-                width="40px"
-                height="40px"
-              />
+              <img className="navbar_logo" src={Logo} alt="Logo" width="40px" height="40px" />
             </Link>
             <div className="navbar-search-container">
               <form onSubmit={handleSearch} className="search-form">
@@ -68,33 +62,21 @@ export default function Navbar() {
             </div>
           </div>
           <div className="navbar-client__btns">
-            <button className="navbar-client__submit-btn">
-              Submit a photo
-            </button>
+            <button className="navbar-client__submit-btn">Submit a photo</button>
             <button className="navbar-client__btn">
               <IoNotificationsSharp />
             </button>
             <div className="navbar-client__avatar">
-              <button
-                className="navbar-client__btn"
-                onClick={() => setClickedOnAvatar((prev) => !prev)}
-              >
+              <button className="navbar-client__btn" onClick={() => setClickedOnAvatar((prev) => !prev)}>
                 <RxAvatar />
               </button>
-              {clickedOnAvatar && (
-                <ClientDropdown setClickedOnAvatar={setClickedOnAvatar} />
-              )}
+              {clickedOnAvatar && <ClientDropdown setClickedOnAvatar={setClickedOnAvatar} />}
             </div>
             <div className="navbar-client__hamburger">
-              <button
-                className="navbar-client__btn"
-                onClick={() => setClickOnHamburger((prev) => !prev)}
-              >
+              <button className="navbar-client__btn" onClick={() => setClickOnHamburger((prev) => !prev)}>
                 <RxHamburgerMenu />
               </button>
-              {clickOnHamburger && (
-                <HamburgerDropdown setClickOnHamburger={setClickOnHamburger} />
-              )}
+              {clickOnHamburger && <HamburgerDropdown setClickOnHamburger={setClickOnHamburger} />}
             </div>
           </div>
           <Authorization />

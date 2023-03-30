@@ -52,26 +52,14 @@ function Topics() {
       <div className="topics-list">
         <div className="topics-list__container" ref={scrollRef}>
           {data?.map((item: ITopics) => (
-            <NavLink
-              key={item.id}
-              to={item.title?.toLowerCase()}
-              className="topics-list__btn"
-            >
+            <NavLink key={item.id} to={item.title?.toLowerCase()} className="topics-list__btn">
               {item.title}
             </NavLink>
           ))}
         </div>
-        {scrollBarPosition !== 0 && (
-          <SlArrowLeft
-            className="topics-list-icon__left"
-            onClick={() => scroll('left')}
-          />
-        )}
+        {scrollBarPosition !== 0 && <SlArrowLeft className="topics-list-icon__left" onClick={() => scroll('left')} />}
         {scrollBarPosition !== 746 && (
-          <SlArrowRight
-            className="topics-list-icon__right"
-            onClick={() => scroll('right')}
-          />
+          <SlArrowRight className="topics-list-icon__right" onClick={() => scroll('right')} />
         )}
       </div>
     </>

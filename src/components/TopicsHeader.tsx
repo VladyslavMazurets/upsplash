@@ -30,12 +30,7 @@ function TopicsHeader() {
             </div>
             <div className="footer__license">
               <span> Read more about the </span>
-              <a
-                href="https://unsplash.com/license"
-                target="_blank"
-                rel="noreferrer"
-                className="footer__link"
-              >
+              <a href="https://unsplash.com/license" target="_blank" rel="noreferrer" className="footer__link">
                 Unsplash License
               </a>
             </div>

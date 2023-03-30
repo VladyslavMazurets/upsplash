@@ -16,10 +16,7 @@ export const store = configureStore({
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([
-      unsplashApi.middleware,
-      unsplashToken.middleware,
-    ]),
+    getDefaultMiddleware().concat([unsplashApi.middleware, unsplashToken.middleware]),
 });
 
 export type RootType = ReturnType<typeof store.getState>;

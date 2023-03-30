@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SiTelegram } from 'react-icons/si';
-import {
-  MdOutlineMapsHomeWork,
-  MdOutlineLibraryBooks,
-  MdOutlineGroups,
-} from 'react-icons/md';
+import { MdOutlineMapsHomeWork, MdOutlineLibraryBooks, MdOutlineGroups } from 'react-icons/md';
 import { AiFillLinkedin, AiOutlineGithub, AiOutlineMail } from 'react-icons/ai';
 
 import { companyData } from '../../assets/constData/companyData';
@@ -63,19 +59,13 @@ function HamburgerDropdown({ setClickOnHamburger }: any) {
           <div>
             <button
               className="hamburger-dropdown-social__btn"
-              onClick={() =>
-                window.open(
-                  'https://www.linkedin.com/in/vladyslav-mazurets-00b9b8257'
-                )
-              }
+              onClick={() => window.open('https://www.linkedin.com/in/vladyslav-mazurets-00b9b8257')}
             >
               <AiFillLinkedin className="hamburger-dropdown-social__icon" />
             </button>
             <button
               className="hamburger-dropdown-social__btn"
-              onClick={() =>
-                window.open('https://github.com/VladyslavMazurets')
-              }
+              onClick={() => window.open('https://github.com/VladyslavMazurets')}
             >
               <AiOutlineGithub className="hamburger-dropdown-social__icon" />
             </button>
@@ -85,16 +75,11 @@ function HamburgerDropdown({ setClickOnHamburger }: any) {
             >
               <AiOutlineMail className="hamburger-dropdown-social__icon" />
             </button>
-            <button
-              className="hamburger-dropdown-social__btn"
-              onClick={() => window.open('https://t.me/Shaman_K1ng')}
-            >
+            <button className="hamburger-dropdown-social__btn" onClick={() => window.open('https://t.me/Shaman_K1ng')}>
               <SiTelegram className="hamburger-dropdown-social__icon" />
             </button>
           </div>
-          <span className="hamburger-dropdown-created">
-            © Created by Vladyslav Mazurets
-          </span>
+          <span className="hamburger-dropdown-created">© Created by Vladyslav Mazurets</span>
         </div>
       </div>
     </>
