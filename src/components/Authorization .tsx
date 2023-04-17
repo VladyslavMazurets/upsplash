@@ -7,8 +7,8 @@ import { codeSliceAction } from '../store/reducers/codeSlice';
 import { tokenSliceAction } from '../store/reducers/tokenSlice';
 import { RootDispatch, RootType } from '../store/store';
 
-const CLIENT_ID = 'UQZCNsUKPoOkiCEIV2kuZm42ttdwyrVJnQkwPcmLdxM';
-const CLIENT_SEACRET = 'EwysqYK-nHfIbi-MEoOvJRheLXb0zh9eQpH72zPaudE';
+const CLIENT_ID = process.env.REACT_APP_ACCESS_KEY;
+const CLIENT_SEACRET = process.env.REACT_APP_SECRET_KEY;
 const AUTORIZE_URL = 'https://unsplash.com/oauth/authorize';
 const REDIRECT_URL = 'https://upsplash.vercel.app'; // http://localhost:3000
 
