@@ -41,6 +41,8 @@ export default function Authorization() {
   useEffect(() => {
     const href = window.location.href;
     let code: ICode = window.localStorage.getItem('code');
+    window.history.replaceState({}, document.title, document.location.origin);
+
 
     if (!code && href) {
       code = href
