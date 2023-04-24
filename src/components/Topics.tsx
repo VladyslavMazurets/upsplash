@@ -22,7 +22,6 @@ function Topics() {
 
   const scroll = (direction: string) => {
     const { current } = scrollRef;
-
     if (current && direction === 'left') {
       current.scrollLeft -= 250;
       setScrollBarPosition(current.scrollLeft);
@@ -58,7 +57,7 @@ function Topics() {
           ))}
         </div>
         {scrollBarPosition !== 0 && <SlArrowLeft className="topics-list-icon__left" onClick={() => scroll('left')} />}
-        {scrollBarPosition !== 746 && (
+        {scrollRef.current.scrollWidth - scrollRef.current.scrollLeft !== scrollRef.current.clientWidth && (
           <SlArrowRight className="topics-list-icon__right" onClick={() => scroll('right')} />
         )}
       </div>
