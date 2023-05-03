@@ -24,17 +24,19 @@
     }
 }
 
-@mixin arrow-icon ($top, $left, $shadow-p-left) {
+@mixin arrow-icon ($top, $left, $shadow-p-left, $p-r, $p-l) {
     position: absolute;
     top: $top;
     left: $left;
+    height: 75%;
 
     color: #555;
     font-size: 1.2rem;
     cursor: pointer;
     background: white;
-    padding-inline: 10px;
-    box-shadow: $shadow-p-left 0 20px 20px white;
+    padding-left: $p-l;
+    padding-right: $p-r;
+    box-shadow: $shadow-p-left 0 20px 8px white;
 
     &:hover {
         color: black;
@@ -81,11 +83,11 @@
     }
 
     .topics-list-icon__left {
-        @include arrow-icon(36%, 0, 30px);
+        @include arrow-icon(12%, 0, 30px, 5px, 5px);
     }
 
     .topics-list-icon__right {
-        @include arrow-icon(36%, 97%, -5px)
+        @include arrow-icon(12%, 97%, -5px, 15px, 20px)
     }
 
 }

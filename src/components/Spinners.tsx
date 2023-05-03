@@ -7,7 +7,7 @@ function Spinners() {
   return (
     <>
       <div className="loader-box">
-        <PropagateLoader className="loader" color="#000000" size={20} speedMultiplier={1} />
+        <PropagateLoader className="loader" color="#000000" size={20} speedMultiplier={0.8} />
       </div>
     </>
   );

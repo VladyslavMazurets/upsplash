@@ -1,13 +1,14 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
+import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
+import { RootType } from '../store/store';
 import { ITopics } from '../models/models';
 import { useGetApiDataQuery } from '../store/api/unsplashApi';
 import { topicsSliceAction } from '../store/reducers/topicsSlice';
 
-import { RootType } from '../store/store';
+import Spinners from './Spinners';
 
 function Topics() {
   const dispatch = useDispatch();
@@ -15,7 +16,9 @@ function Topics() {
 
   const scrollRef = useRef() as MutableRefObject<HTMLInputElement>;
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
-  const { data, isSuccess, isLoading } = useGetApiDataQuery({
+  const [isMaxWidth, setIsMaxWidth] = useState<boolean>(false);
+
+  const { data, isSuccess } = useGetApiDataQuery({
     url: 'topics?per_page=20',
     token,
   });
@@ -33,8 +36,16 @@ function Topics() {
 
   useEffect(() => {
     isSuccess && dispatch(topicsSliceAction.saveTopicsData(data));
-  }, []);
+  }, [data]);
 
+  useEffect(() => {
+    if (data) {
+      const { current } = scrollRef;
+      setIsMaxWidth(current.scrollWidth - current.scrollLeft !== current.clientWidth);
+    }
+  }, [data, scroll]);
+
+  if (!isSuccess) return <Spinners />;
   return (
     <>
       <div className="topics-editior">
@@ -56,10 +67,9 @@ function Topics() {
             </NavLink>
           ))}
         </div>
+
         {scrollBarPosition !== 0 && <SlArrowLeft className="topics-list-icon__left" onClick={() => scroll('left')} />}
-        {scrollRef.current.scrollWidth - scrollRef.current.scrollLeft !== scrollRef.current.clientWidth && (
-          <SlArrowRight className="topics-list-icon__right" onClick={() => scroll('right')} />
-        )}
+        {isMaxWidth && <SlArrowRight className="topics-list-icon__right" onClick={() => scroll('right')} />}
       </div>
     </>
   );
