@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Mesonry from 'react-masonry-css';
 import { useSelector } from 'react-redux';
 
-import '../styles/PhotoCards.scss';
+import '../styles/componentsStyle/PhotoCards.scss';
+import { Link } from 'react-router-dom';
+
 import { ITopics } from '../models/models';
 import { useGetApiDataQuery } from '../store/api/unsplashApi';
 import { RootType } from '../store/store';
@@ -14,7 +16,7 @@ function PhotoCards() {
   const [page, setPage] = useState(1);
 
   const token = useSelector((state: RootType) => state.token);
-  const { data, isSuccess, isLoading } = useGetApiDataQuery({
+  const { data, isSuccess } = useGetApiDataQuery({
     url: `photos?page=${page}&per_page=30&order_by=popular`,
     token,
   });
@@ -41,9 +43,9 @@ function PhotoCards() {
           columnClassName="photo-grid__column"
         >
           {photos?.map((photo: ITopics) => (
-            <div key={photo.id} className="photo">
+            <Link to={`/photos/${photo.id}`} key={photo.id} className="photo">
               <img src={photo.urls?.regular} alt={`Photo by ${photo.user?.name}`} />
-            </div>
+            </Link>
           ))}
         </Mesonry>
       </div>

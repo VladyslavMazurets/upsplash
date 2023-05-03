@@ -23,16 +23,19 @@ function Topics() {
     token,
   });
 
-  const scroll = (direction: string) => {
-    const { current } = scrollRef;
-    if (current && direction === 'left') {
-      current.scrollLeft -= 250;
-      setScrollBarPosition(current.scrollLeft);
-    } else {
-      current.scrollLeft += 250;
-      setScrollBarPosition(current.scrollLeft);
-    }
-  };
+  const scroll = useCallback(
+    (direction: string) => {
+      const { current } = scrollRef;
+      if (current && direction === 'left') {
+        current.scrollLeft -= 250;
+        setScrollBarPosition(current.scrollLeft);
+      } else {
+        current.scrollLeft += 250;
+        setScrollBarPosition(current.scrollLeft);
+      }
+    },
+    [scrollBarPosition]
+  );
 
   useEffect(() => {
     isSuccess && dispatch(topicsSliceAction.saveTopicsData(data));

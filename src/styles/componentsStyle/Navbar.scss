@@ -17,12 +17,11 @@ $btn-color: #555;
 
 .navbar {
     position: fixed;
-    z-index: 1000;
+    z-index: 50;
     top: 0;
     left: 0;
    
     width: 96.9%;
-    z-index: 100;
     padding-top: 15px;
     padding-inline: 30px;
 
@@ -88,7 +87,7 @@ $btn-color: #555;
                     }
                 }
 
-                @import './dropDownStyle/searchDropdown.scss';
+                @import '../dropDownStyle/searchDropdown.scss';
             }
 
 
@@ -116,12 +115,12 @@ $btn-color: #555;
 
             .navbar-client__avatar {
                 position: relative;
-                @import "./dropDownStyle/clientDropdown.scss";
+                @import '../dropDownStyle/clientDropdown.scss';
             }
 
             .navbar-client__hamburger {
                 position: relative;
-                @import "./dropDownStyle/hamburgerDropdown.scss";
+                @import '../dropDownStyle//hamburgerDropdown.scss';
             }
 
             .navbar-client__submit-btn {
@@ -188,6 +187,6 @@ $btn-color: #555;
     .topics {
         display: flex;
         align-items: center;
-        @import '../styles/Topics.scss';
+        @import '../componentsStyle/Topics.scss';
     }
 }

@@ -11,12 +11,12 @@ import '../styles/Editorial.scss';
 function Editorial() {
   const token = useSelector((state: RootType) => state.token);
   // eslint-disable-next-line prettier/prettier
-  const { data: header, isSuccess, isLoading } = useGetApiDataQuery({
+  const { data: header, isSuccess } = useGetApiDataQuery({
     url: 'photos/random?orientation=landscape&count=1',
     token,
   });
 
-  isLoading && <Spinners />;
+  !isSuccess && <Spinners />;
 
   return (
     <>

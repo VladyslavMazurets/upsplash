@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropagateLoader } from 'react-spinners';
 
-import '../styles/Loader.scss';
+import '../styles/componentsStyle/Loader.scss';
 
 function Spinners() {
   return (

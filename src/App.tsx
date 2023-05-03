@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Editorial from './pages/Editorial';
+import PhotoCard from './pages/PhotoCard';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Editorial />} />
+        <Route path="photos/:id" element={<PhotoCard />} />
       </Routes>
     </>
   );
